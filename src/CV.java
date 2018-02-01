@@ -9,12 +9,12 @@ public class CV {
 	
 	public CV (String nom, String prenom,String formation, int experienceTravail, String competences, String attentesCours ){
 		
-		nom = this.nom;
-		prenom = this.prenom;
-		formation = this.formation;
-		experienceTravail = this.experienceTravail;
-		competences = this.competences;
-		attentesCours = this.attentesCours;
+		this.nom = nom; 
+		this.prenom = prenom;
+		this.formation = formation;
+		this.experienceTravail =experienceTravail;
+		this.competences = competences;
+		this.attentesCours = attentesCours;
 				
 	}
 	
@@ -24,11 +24,9 @@ public class CV {
 				+"Prénom : "+this.prenom+"\n"
 				+"Formation : "+this.formation +"\n"
 				+"Experience de travail : "+this.experienceTravail+"\n"
-				+"Compétences :");
+				+"Compétences : " + this.competences + "\n"
+				+"Attentes ud cours : " + this.attentesCours + "\n");
 		
-		System.out.println("\ncompetences : "+this.competences);
-		
-		System.out.println("\nAttentes du cours : "+this.attentesCours);
 				
 	}
 }
