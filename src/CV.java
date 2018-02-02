@@ -19,13 +19,13 @@ public class CV {
 	}
 	
 	public void afficher(){
-		System.out.println("Informations de\n"
+		System.out.println("Informations de " + this.prenom + " " + this.nom + "\n"
 				+"Nom : "+this.nom+"\n"
 				+"Prénom : "+this.prenom+"\n"
 				+"Formation : "+this.formation +"\n"
 				+"Experience de travail : "+this.experienceTravail+"\n"
 				+"Compétences : " + this.competences + "\n"
-				+"Attentes ud cours : " + this.attentesCours + "\n");
+				+"Attentes du cours : " + this.attentesCours + "\n");
 		
 				
 	}
