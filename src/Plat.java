@@ -1,9 +1,9 @@
 
 public class Plat {
-	private int prix;
+	private double prix;
 	private String nom;
 	
-	public Plat(int prix, String nom){
+	public Plat(double prix, String nom){
 		
 		this.nom = nom;
 		
@@ -17,7 +17,7 @@ public class Plat {
 		
 	}
 	
-	public void setPrix(int prix){
+	public void setPrix(double prix){
 		
 		this.prix = prix;
 		
@@ -29,7 +29,7 @@ public class Plat {
 		
 	}
 	
-	public int getPrix(int prix){
+	public double getPrix(){
 		
 		return this.prix;
 		

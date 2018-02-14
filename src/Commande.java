@@ -2,10 +2,10 @@
 public class Commande {
 	
 	private String nomClient;
-	private Plat nomPlat;
+	private String nomPlat;
 	private int qte;
 	
-	public Commande (String nomClient,Plat nomPlat,int qte){
+	public Commande (String nomClient,String nomPlat,int qte){
 		this.nomClient = nomClient;
 		this.nomPlat = nomPlat;
 		this.qte = qte;
@@ -20,11 +20,11 @@ public class Commande {
 		return this.nomClient;
 	}
 	
-	public void setNomPlat(Plat nomPlat){
+	public void setNomPlat(String nomPlat){
 		this.nomPlat = nomPlat;
 	}
 	
-	public Plat getNomPlat(){
+	public String getNomPlat(){
 		return this.nomPlat;
 	}
 	
