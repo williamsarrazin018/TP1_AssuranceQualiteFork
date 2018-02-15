@@ -15,7 +15,7 @@ public class Main {
 		
 		CV cv2 = new CV("Torres", "Agustin", "Collégiale", 2, "Prog", "Apprendre");
 		
-		System.out.println("Bienvenue chez Barette!\n");
+		System.out.println("Bienvenue chez Barette!\nFactures:");
 		
 		//cv1.afficher();
 		
@@ -98,8 +98,41 @@ public class Main {
 					
 				}
 				
+				
 			}
 			
+				//Faire les factures
+				for (int i = 1; i < cptClient; i++) {
+				
+				double prix = 0;
+				
+				for (int j = 0; j < cptCommande; j++) {
+					
+					if (tabClients[i].equals(tabCommandes[j].getNomClient())) {
+						
+						boolean trouve = false;
+						
+						for (int k = 0; k <= cptPlat && !trouve; k++) {
+							
+							if (tabPlats[k].getNom().equals(tabCommandes[j].getNomPlat())) {
+								
+								prix += tabPlats[k].getPrix() * tabCommandes[j].getQte();
+								trouve = true;
+								
+							} else {
+								
+								prix += 0;
+								
+							}
+						}
+						
+					} 
+					
+				}
+				
+				System.out.println(tabClients[i] + " " + prix + "$");
+				
+			}
 			
 		} catch (IOException e) {
 
