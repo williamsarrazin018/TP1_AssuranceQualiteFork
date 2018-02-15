@@ -67,6 +67,7 @@ public class Main {
 				if (clients) {
 					
 					tabClients[cptClient] = ligneCourrante;
+					
 					cptClient++;
 					
 				}
