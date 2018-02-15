@@ -17,9 +17,9 @@ public class Main {
 		
 		System.out.println("Bienvenue chez Barette!\n");
 		
-		cv1.afficher();
+		//cv1.afficher();
 		
-		cv2.afficher();
+		//cv2.afficher();
 		
 		//Partie 2
 
