@@ -17,7 +17,9 @@ public class Main {
 		
 		System.out.println("Bienvenue chez Barette!\nFactures:");
 		
-		Facture.afficherFacture();
+		Facture facture = new Facture();
+		
+		facture.afficherFacture();
 
 	}
 		

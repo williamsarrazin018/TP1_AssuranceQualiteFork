@@ -5,8 +5,55 @@ import java.io.IOException;
 
 public class Facture {
 
+	private static String[] tabClients = new String[20];
+	private static Plat[] tabPlats = new Plat[20];
+	private static Commande[] tabCommandes = new Commande[20];
+
+	private static int cptClient = 0;
+	private static int cptPlat = 0;
+	private static int cptCommande = 0;
 	
-	public static void afficherFacture() {
+	public void afficherFacture() {
+		
+			
+
+			
+			faireFactures();
+				//Faire les factures
+				for (int i = 1; i < cptClient; i++) {
+				
+				double prix = 0;
+				
+				for (int j = 0; j < cptCommande; j++) {
+					
+					if (tabClients[i].equals(tabCommandes[j].getNomClient())) {
+						
+						boolean trouve = false;
+						
+						for (int k = 0; k <= cptPlat && !trouve; k++) {
+							
+							if (tabPlats[k].getNom().equals(tabCommandes[j].getNomPlat())) {
+								
+								prix += tabPlats[k].getPrix() * tabCommandes[j].getQte();
+								trouve = true;
+								
+							} else {
+								
+								prix += 0;
+								
+							}
+						}
+						
+					} 
+					
+				}
+				
+				System.out.println(tabClients[i] + " " + prix + "$");
+				}
+		
+	}
+	
+	public void faireFactures() {
 		
 		String fichier = ".\\commande.txt";
 
@@ -14,19 +61,14 @@ public class Facture {
 		FileReader fReader = null;
 
 		try {
-
-			//Tableaux pour stocker les informations
-			String tabClients[] = new String[20];
-			Plat tabPlats[] = new Plat[20];
-			Commande tabCommandes[] = new Commande[20];
 			
 			boolean clients = false;
 			boolean plats = false;
 			boolean commandes = false;
 			
-			int cptClient = 0;
-			int cptPlat = 0;
-			int cptCommande = 0;
+			 cptClient = 0;
+			 cptPlat = 0;
+			 cptCommande = 0;
 			
 			//Lire le contenu du fichier et le mettre dans les tableaux
 			fReader = new FileReader(fichier);
@@ -88,38 +130,7 @@ public class Facture {
 				
 			}
 			
-				//Faire les factures
-				for (int i = 1; i < cptClient; i++) {
-				
-				double prix = 0;
-				
-				for (int j = 0; j < cptCommande; j++) {
-					
-					if (tabClients[i].equals(tabCommandes[j].getNomClient())) {
-						
-						boolean trouve = false;
-						
-						for (int k = 0; k <= cptPlat && !trouve; k++) {
-							
-							if (tabPlats[k].getNom().equals(tabCommandes[j].getNomPlat())) {
-								
-								prix += tabPlats[k].getPrix() * tabCommandes[j].getQte();
-								trouve = true;
-								
-							} else {
-								
-								prix += 0;
-								
-							}
-						}
-						
-					} 
-					
-				}
-				
-				System.out.println(tabClients[i] + " " + prix + "$");
-				
-			}
+
 			
 		} catch (IOException e) {
 
@@ -148,6 +159,5 @@ public class Facture {
 		}
 		
 	}
-	
 	
 }
