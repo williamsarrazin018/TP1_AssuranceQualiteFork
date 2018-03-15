@@ -158,7 +158,31 @@ public class Facture {
 			}
 
 		}
+	}
 		
+		public boolean verifierClientTest(String client) {
+			boolean correct = false;
+			boolean clientCorrect = false;
+			boolean clientEspaceCorrect = true;
+			
+			for (int i = 0; i < Facture.tabClients.length; i++) {
+				if (client == Facture.tabClients[i]){
+					clientCorrect = true;
+					correct = true;
+				}
+			}
+			if(clientCorrect){
+				System.out.println("Nom existant"); //pour test
+				String[]nom = client.split(" ");
+				if (nom[1] != null){
+					System.out.println("Probleme avec espace"); // pour test
+					correct = false;
+				}
+			} else {
+				System.out.println("Nom inexistant");
+			}
+		
+			return correct;
 	}
 	
 }
