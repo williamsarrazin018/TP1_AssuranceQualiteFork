@@ -1,3 +1,4 @@
+package Main;
 
 public class CV {
 	private String nom;

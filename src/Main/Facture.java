@@ -1,3 +1,4 @@
+package Main;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -5,9 +6,9 @@ import java.io.IOException;
 
 public class Facture {
 
-	private static String[] tabClients = new String[20];
-	private static Plat[] tabPlats = new Plat[20];
-	private static Commande[] tabCommandes = new Commande[20];
+	public static String[] tabClients = new String[20];
+	public static Plat[] tabPlats = new Plat[20];
+	public static Commande[] tabCommandes = new Commande[20];
 
 	private static int cptClient = 0;
 	private static int cptPlat = 0;
