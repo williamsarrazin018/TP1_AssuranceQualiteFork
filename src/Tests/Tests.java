@@ -32,6 +32,20 @@ public class Tests {
 		}
 	}
 	
+	@Test
+	public void testFacture0() {
+		
+		String fichierTest = ".\\testFacture0.txt";
+		
+		Facture facture = new Facture();
+		
+		facture.faireFactures(fichierTest);
+		
+		
+		
+		facture.afficherFacture(fichierTest);
+		
+	}
 	
 	
 }

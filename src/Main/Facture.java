@@ -13,50 +13,50 @@ public class Facture {
 	private static int cptClient = 0;
 	private static int cptPlat = 0;
 	private static int cptCommande = 0;
+	private String[] lignesFactures;
 	
-	public void afficherFacture() {
+	public void afficherFacture(String fic) {
 		
-			
+		lignesFactures = new String[cptCommande];
 
-			
-			faireFactures();
-				//Faire les factures
-				for (int i = 1; i < cptClient; i++) {
-				
-				double prix = 0;
-				
-				for (int j = 0; j < cptCommande; j++) {
-					
-					if (tabClients[i].equals(tabCommandes[j].getNomClient())) {
-						
-						boolean trouve = false;
-						
-						for (int k = 0; k <= cptPlat && !trouve; k++) {
-							
-							if (tabPlats[k].getNom().equals(tabCommandes[j].getNomPlat())) {
-								
-								prix += tabPlats[k].getPrix() * tabCommandes[j].getQte();
-								trouve = true;
-								
-							} else {
-								
-								prix += 0;
-								
-							}
+		// Faire les factures
+		for (int i = 1; i < cptClient; i++) {
+
+			double prix = 0;
+
+			for (int j = 0; j < cptCommande; j++) {
+
+				if (tabClients[i].equals(tabCommandes[j].getNomClient())) {
+
+					boolean trouve = false;
+
+					for (int k = 0; k <= cptPlat && !trouve; k++) {
+
+						if (tabPlats[k].getNom().equals(
+								tabCommandes[j].getNomPlat())) {
+
+							prix += tabPlats[k].getPrix()
+									* tabCommandes[j].getQte();
+							trouve = true;
+
+						} else {
+
+							prix += 0;
+
 						}
-						
-					} 
-					
+					}
+
 				}
-				
-				System.out.println(tabClients[i] + " " + prix + "$");
-				}
-		
+
+			}
+
+			lignesFactures[i] = tabClients[i] + " " + prix + "$";
+			System.out.println(lignesFactures[i]);
+		}
+
 	}
 	
-	public void faireFactures() {
-		
-		String fichier = ".\\commande.txt";
+	public void faireFactures(String fichier) {
 
 		BufferedReader bReader = null;
 		FileReader fReader = null;

@@ -18,9 +18,11 @@ public class Main {
 		
 		System.out.println("Bienvenue chez Barette!\nFactures:");
 		
-		Facture facture = new Facture();
+		String fichier = ".\\commande.txt";
 		
-		facture.afficherFacture();
+		Facture facture = new Facture();
+		facture.faireFactures(fichier);
+		facture.afficherFacture(fichier);
 
 	}
 		
