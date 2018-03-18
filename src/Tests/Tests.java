@@ -25,7 +25,7 @@ public class Tests {
 		if(clientCorrect){
 			System.out.println("Nom existant");
 			String[]nom = client.split(" ");
-			if (nom[1] != null){
+			if (nom.length > 1){
 				System.out.println("Probleme avec espace");
 			}
 		} else {
@@ -71,6 +71,27 @@ public class Tests {
 		tabLignesExpected[1] = "Céline 15.75$";
 		tabLignesExpected[2] = "Steeve 5.0$";
 		tabLignesExpected[3] = "William 13.0$";
+		
+		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		
+		
+	}
+	
+	//William
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testLignesFactureAvecErreurFormatNom() {
+		
+		String fichierTest = ".\\testErreurNom.txt";
+		
+		Facture facture = new Facture();
+		
+		facture.gererCommandes(fichierTest);
+		
+		facture.lignesFacture();
+		
+		String[] tabLignesExpected = new String[20];
+		tabLignesExpected[1] = "Roger 10.5$";
 		
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		
