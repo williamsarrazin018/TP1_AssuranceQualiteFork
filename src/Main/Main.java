@@ -21,8 +21,8 @@ public class Main {
 		String fichier = ".\\commande.txt";
 		
 		Facture facture = new Facture();
-		facture.faireFactures(fichier);
-		facture.afficherFacture(fichier);
+		facture.gererCommandes(fichier);
+		facture.lignesFacture();
 
 	}
 		

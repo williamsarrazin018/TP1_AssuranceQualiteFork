@@ -15,9 +15,9 @@ public class Facture {
 	private static int cptCommande = 0;
 	private String[] lignesFactures;
 	
-	public void afficherFacture(String fic) {
+	public void lignesFacture() {
 		
-		lignesFactures = new String[cptCommande];
+		setLignesFactures(new String[20]);
 
 		// Faire les factures
 		for (int i = 1; i < cptClient; i++) {
@@ -50,13 +50,16 @@ public class Facture {
 
 			}
 
-			lignesFactures[i] = tabClients[i] + " " + prix + "$";
-			System.out.println(lignesFactures[i]);
+			if (prix > 0) {
+				getLignesFactures()[i] = tabClients[i] + " " + prix + "$";
+				System.out.println(getLignesFactures()[i]);
+				
+			}
 		}
 
 	}
 	
-	public void faireFactures(String fichier) {
+	public void gererCommandes(String fichier) {
 
 		BufferedReader bReader = null;
 		FileReader fReader = null;
@@ -184,5 +187,13 @@ public class Facture {
 		
 			return correct;
 	}
+
+		public String[] getLignesFactures() {
+			return lignesFactures;
+		}
+
+		public void setLignesFactures(String[] lignesFactures) {
+			this.lignesFactures = lignesFactures;
+		}
 	
 }

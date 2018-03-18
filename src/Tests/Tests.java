@@ -8,6 +8,7 @@ import Main.Facture;
 
 public class Tests {
 
+	//Agustin
 	@Test
 	public void verifierClientTest() {
 		Facture.tabClients[0] = "allo5 aulo";
@@ -32,20 +33,48 @@ public class Tests {
 		}
 	}
 	
+	//William
+	@SuppressWarnings("deprecation")
 	@Test
-	public void testFacture0() {
+	public void testLignesFactureAvecTotalDe0() {
 		
 		String fichierTest = ".\\testFacture0.txt";
 		
 		Facture facture = new Facture();
 		
-		facture.faireFactures(fichierTest);
+		facture.gererCommandes(fichierTest);
 		
+		facture.lignesFacture();
 		
+		String[] tabLignesExpected = new String[20];
+		tabLignesExpected[1] = "Céline 15.75$";
 		
-		facture.afficherFacture(fichierTest);
+		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		
 		
 	}
 	
+	//William
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testLignesFactureFicSansErreur() {
+		
+		String fichierTest = ".\\testFactureSansErreur.txt";
+		
+		Facture facture = new Facture();
+		
+		facture.gererCommandes(fichierTest);
+		
+		facture.lignesFacture();
+		
+		String[] tabLignesExpected = new String[20];
+		tabLignesExpected[1] = "Céline 15.75$";
+		tabLignesExpected[2] = "Steeve 5.0$";
+		tabLignesExpected[3] = "William 13.0$";
+		
+		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		
+		
+	}
 	
 }
