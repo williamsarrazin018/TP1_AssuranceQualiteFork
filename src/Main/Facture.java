@@ -31,7 +31,7 @@ public class Facture {
 		
 		for (int j = 0; j < tabErreurs.length; j++) {
 			if (tabErreurs[j] != null) {
-				lignesFactures[cptLignes] = "Erreur : " + tabErreurs[j];
+				lignesFactures[cptLignes] = tabErreurs[j];
 				cptLignes++;
 			}
 		}
@@ -116,7 +116,7 @@ public class Facture {
 				}
 
 				if (clients) {
-
+					
 					tabClients[cptClient] = ligneCourrante;
 
 					cptClient++;
@@ -137,17 +137,31 @@ public class Facture {
 
 					try {
 
+						boolean trouve = false;
+						
 						String[] commande = ligneCourrante.split(" ");
 						Commande commandeTmp = new Commande(commande[0],
 								commande[1], Integer.parseInt(commande[2]));
-						tabCommandes[cptCommande] = commandeTmp;
-						cptCommande++;
+						for (int i = 0; i < tabClients.length; i++) {
+							if (tabClients[i] != null && !trouve) {
+								if (tabClients[i].equals(commandeTmp.getNomClient())) {
+									trouve = true;
+								}
+							}
+						}
+						
+						if (trouve) {
+							tabCommandes[cptCommande] = commandeTmp;
+							cptCommande++;
+						} else {
+							tabErreurs[cptErreurs] = "Erreur nom introuvée : " + ligneCourrante;
+							cptErreurs++;
+						}
+						
 
 					} catch (Exception formatInvalide) {
 
-						System.out
-								.println("Le fichier ne respecte pas le format demandé!");
-						tabErreurs[cptErreurs] = ligneCourrante;
+						tabErreurs[cptErreurs] = "Erreur de format : " + ligneCourrante;
 						cptErreurs++;
 
 					}

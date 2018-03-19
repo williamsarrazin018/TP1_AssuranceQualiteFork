@@ -98,7 +98,9 @@ public class Tests {
 		facture.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[1] = "Roger 10.5$";
+		tabLignesExpected[0] = "Erreur de format : Céline t Frites 2";
+		tabLignesExpected[1] = "Erreur de format : Céline t Repas_Poulet 1";
+		tabLignesExpected[2] = "Roger 10.5$";
 		
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		
