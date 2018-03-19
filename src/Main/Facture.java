@@ -16,7 +16,9 @@ public class Facture {
 	public static String[] tabClients = new String[20];
 	public static Plat[] tabPlats = new Plat[20];
 	public static Commande[] tabCommandes = new Commande[20];
+	public static String[] tabErreurs = new String[20];
 
+	private static int cptErreur = 0;
 	private static int cptClient = 0;
 	private static int cptPlat = 0;
 	private static int cptCommande = 0;
@@ -59,12 +61,7 @@ public class Facture {
 
 			if (prix > 0) {
 				
-				if (!verifierClient(tabClients[i])) {
-					lignesFactures[i] = "Erreur de nom de client : " + tabCommandes[i];
-				}
-				else{
-					getLignesFactures()[i] = tabClients[i] + " " + prix + "$";
-				}
+				getLignesFactures()[i] = tabClients[i] + " " + prix + "$";
 
 			}
 		}
@@ -111,9 +108,14 @@ public class Facture {
 
 				if (clients) {
 
-					tabClients[cptClient] = ligneCourrante;
-
-					cptClient++;
+					if (verifierClient(ligneCourrante)) {
+						tabClients[cptClient] = ligneCourrante;
+						cptClient++;
+					} else {
+						
+						tabErreurs[cptErreur] = ligneCourrante;
+						
+					}
 
 				}
 
