@@ -15,7 +15,7 @@ public class Tests {
 		String client = "allo5 aulo";
 		
 		boolean clientCorrect = false;
-		boolean clientEspaceCorrect = true;
+		
 		
 		for (int i = 0; i < Facture.tabClients.length; i++) {
 			if (client == Facture.tabClients[i]){
@@ -32,6 +32,13 @@ public class Tests {
 			System.out.println("Nom inexistant");
 		}
 	}
+	
+	//Agustin
+		@Test
+		public void verifierPlatTest() {
+			String
+			boolean nomPlat =true;
+		}
 	
 	//William
 	@SuppressWarnings("deprecation")

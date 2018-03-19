@@ -59,7 +59,7 @@ public class Facture {
 
 			if (prix > 0) {
 				
-				if (!verifierClientTest(tabClients[i])) {
+				if (!verifierClient(tabClients[i])) {
 					lignesFactures[i] = "Erreur de nom de client : " + tabCommandes[i];
 				}
 				else{
@@ -173,10 +173,10 @@ public class Facture {
 		}
 	}
 
-	public boolean verifierClientTest(String client) {
+	public boolean verifierClient(String client) {
 		boolean correct = false;
 		boolean clientCorrect = false;
-		boolean clientEspaceCorrect = true;
+		
 
 		for (int i = 0; i < Facture.tabClients.length; i++) {
 			if (client == Facture.tabClients[i]) {
@@ -196,6 +196,22 @@ public class Facture {
 		}
 
 		return correct;
+	}
+	
+	public boolean verifierPlat(String nomPlat){
+		boolean platCorrect = false;
+		
+		for (int i = 0; i <tabPlats.length ; i++) {
+			if (tabPlats[i].getNom() == nomPlat){
+				platCorrect = true;	
+			}
+			String[]plat = nomPlat.split(" ");
+			if (plat.length > 1){
+				System.out.println("Probleme avec espace");//pour test
+				platCorrect = false;
+			}
+		}
+		return platCorrect;
 	}
 
 	public String[] getLignesFactures() {
