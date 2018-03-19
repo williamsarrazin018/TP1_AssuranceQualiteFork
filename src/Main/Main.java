@@ -18,7 +18,7 @@ public class Main {
 		
 		System.out.println("Bienvenue chez Barette!\nFactures:");
 		
-		String fichier = ".\\commande.txt";
+		String fichier = ".\\testErreurNom.txt";
 		
 		Facture facture = new Facture();
 		facture.gererCommandes(fichier);

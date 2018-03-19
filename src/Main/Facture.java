@@ -17,8 +17,9 @@ public class Facture {
 	public static Plat[] tabPlats = new Plat[20];
 	public static Commande[] tabCommandes = new Commande[20];
 	public static String[] tabErreurs = new String[20];
-
-	private static int cptErreur = 0;
+	
+	private static int cptLignes = 0;
+	private static int cptErreurs = 0;
 	private static int cptClient = 0;
 	private static int cptPlat = 0;
 	private static int cptCommande = 0;
@@ -27,10 +28,17 @@ public class Facture {
 	public void lignesFacture() {
 
 		setLignesFactures(new String[20]);
-
+		
+		for (int j = 0; j < tabErreurs.length; j++) {
+			if (tabErreurs[j] != null) {
+				lignesFactures[cptLignes] = "Erreur : " + tabErreurs[j];
+				cptLignes++;
+			}
+		}
+		
 		// Faire les factures
 		for (int i = 1; i < cptClient; i++) {
-
+			
 			double prix = 0;
 
 			for (int j = 0; j < cptCommande; j++) {
@@ -61,9 +69,10 @@ public class Facture {
 
 			if (prix > 0) {
 				
-				getLignesFactures()[i] = tabClients[i] + " " + prix + "$";
+					getLignesFactures()[cptLignes] = tabClients[i] + " " + prix + "$";
 
 			}
+			
 		}
 
 	}
@@ -108,14 +117,9 @@ public class Facture {
 
 				if (clients) {
 
-					if (verifierClient(ligneCourrante)) {
-						tabClients[cptClient] = ligneCourrante;
-						cptClient++;
-					} else {
-						
-						tabErreurs[cptErreur] = ligneCourrante;
-						
-					}
+					tabClients[cptClient] = ligneCourrante;
+
+					cptClient++;
 
 				}
 
@@ -143,6 +147,8 @@ public class Facture {
 
 						System.out
 								.println("Le fichier ne respecte pas le format demandé!");
+						tabErreurs[cptErreurs] = ligneCourrante;
+						cptErreurs++;
 
 					}
 
