@@ -54,7 +54,7 @@ public class Tests {
 		facture.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[1] = "Céline 15.75$";
+		tabLignesExpected[0] = "Céline 15.75$";
 		
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		
@@ -75,9 +75,9 @@ public class Tests {
 		facture.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[1] = "Céline 15.75$";
-		tabLignesExpected[2] = "Steeve 5.0$";
-		tabLignesExpected[3] = "William 13.0$";
+		tabLignesExpected[2] = "Céline 15.75$";
+		tabLignesExpected[1] = "Steeve 5.0$";
+		tabLignesExpected[0] = "William 13.0$";
 		
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		
