@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Main.Facture;
+import Main.Plat;
 
 public class Tests {
 
@@ -33,12 +34,49 @@ public class Tests {
 		}
 	}
 	
-//	//Agustin
-//		@Test
-//		public void verifierPlatTest() {
-//			String
-//			boolean nomPlat =true;
-//		}
+	//Agustin
+		@Test
+			public void verifierPlatTest() {
+				Plat plat = new Plat(12,"platTest22");
+				String nomTest= "platTest22";
+				plat.setNom(nomTest);
+				Plat plat1 = new Plat(12,"platTEst");
+				Plat plat2 = new Plat(12,"platTest22");
+				
+				plat2.setNom("platTest22");
+			
+				Facture.tabPlats[0] = plat1;
+				Facture.tabPlats[1] = plat2;
+				boolean nomPlat = false;
+				Plat test = new Plat(12,"platTest 22");
+				
+				for (int i = 0; i < 2 ; i++) {
+
+					if ( plat.getNom() == Facture.tabPlats[i].getNom() ){
+						nomPlat = true;	
+						test.setNom("platTest22");
+						
+					}
+					
+					if(nomPlat == true){
+						String[]tabPlat = plat.getNom().split(" ");
+						if (tabPlat.length > 2){
+							System.out.println("Probleme avec espace");//pour test
+							nomPlat = false;
+						}
+						
+					}
+					
+				}
+				
+				assertEquals(Facture.tabPlats[1].getNom(), test.getNom());
+			
+			
+			}
+	
+	
+	
+
 	
 	//William
 	@SuppressWarnings("deprecation")
