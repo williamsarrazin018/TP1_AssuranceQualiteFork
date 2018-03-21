@@ -33,12 +33,12 @@ public class Tests {
 		}
 	}
 	
-	//Agustin
-		@Test
-		public void verifierPlatTest() {
-			String
-			boolean nomPlat =true;
-		}
+//	//Agustin
+//		@Test
+//		public void verifierPlatTest() {
+//			String
+//			boolean nomPlat =true;
+//		}
 	
 	//William
 	@SuppressWarnings("deprecation")
@@ -75,10 +75,11 @@ public class Tests {
 		facture.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[2] = "Céline 15.75$";
-		tabLignesExpected[1] = "Steeve 5.0$";
-		tabLignesExpected[0] = "William 13.0$";
+		tabLignesExpected[1] = "Céline 15.75$";
+		tabLignesExpected[2] = "Steeve 5.0$";
+		tabLignesExpected[3] = "William 13.0$";
 		
+
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		
 		
@@ -89,13 +90,18 @@ public class Tests {
 	@Test
 	public void testLignesFactureAvecErreurFormatNom() {
 		
-		String fichierTest = ".\\testErreurNom.txt";
+		String fichierTest = ".\\testErreurFormat.txt";
 		
 		Facture facture = new Facture();
 		
 		facture.gererCommandes(fichierTest);
 		
 		facture.lignesFacture();
+		
+		for (int i = 0; i < facture.getLignesFactures().length; i++) {
+			System.out.println(facture.getLignesFactures()[i]);
+		}
+		
 		
 		String[] tabLignesExpected = new String[20];
 		tabLignesExpected[0] = "Erreur de format : Céline t Frites 2";

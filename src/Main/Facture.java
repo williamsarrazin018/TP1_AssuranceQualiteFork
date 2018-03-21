@@ -23,11 +23,10 @@ public class Facture {
 	private static int cptClient = 0;
 	private static int cptPlat = 0;
 	private static int cptCommande = 0;
-	private String[] lignesFactures;
+	private String[] lignesFactures = new String[20];
 
 	public void lignesFacture() {
-
-		setLignesFactures(new String[20]);
+		
 		
 		for (int j = 0; j < tabErreurs.length; j++) {
 			if (tabErreurs[j] != null) {
@@ -37,7 +36,7 @@ public class Facture {
 		}
 		
 		// Faire les factures
-		for (int i = 1; i < cptClient; i++) {
+		for (int i = 0; i < cptClient; i++) {
 			
 			double prix = 0;
 
@@ -64,12 +63,12 @@ public class Facture {
 					}
 
 				}
-
+				
 			}
 
 			if (prix > 0) {
-				
 					getLignesFactures()[cptLignes] = tabClients[i] + " " + prix + "$";
+					cptLignes++;
 
 			}
 			
@@ -140,23 +139,30 @@ public class Facture {
 						boolean trouve = false;
 						
 						String[] commande = ligneCourrante.split(" ");
-						Commande commandeTmp = new Commande(commande[0],
-								commande[1], Integer.parseInt(commande[2]));
-						for (int i = 0; i < tabClients.length; i++) {
-							if (tabClients[i] != null && !trouve) {
-								if (tabClients[i].equals(commandeTmp.getNomClient())) {
-									trouve = true;
+						if (commande.length > 3) {
+							throw new Exception("Format de commande invalide");
+						} else {
+
+							Commande commandeTmp = new Commande(commande[0],
+									commande[1], Integer.parseInt(commande[2]));
+							for (int i = 0; i < cptClient; i++) {
+								if (tabClients[i] != null && !trouve) {
+									if (tabClients[i].equals(commandeTmp.getNomClient())) {
+										trouve = true;
+									}
 								}
 							}
+							
+							if (trouve) {
+								tabCommandes[cptCommande] = commandeTmp;
+								cptCommande++;
+							} else {
+								tabErreurs[cptErreurs] = "Erreur nom introuvée : " + ligneCourrante;
+								cptErreurs++;
+							}
+							
 						}
 						
-						if (trouve) {
-							tabCommandes[cptCommande] = commandeTmp;
-							cptCommande++;
-						} else {
-							tabErreurs[cptErreurs] = "Erreur nom introuvée : " + ligneCourrante;
-							cptErreurs++;
-						}
 						
 
 					} catch (Exception formatInvalide) {
