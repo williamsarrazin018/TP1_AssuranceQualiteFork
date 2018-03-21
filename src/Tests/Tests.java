@@ -75,11 +75,34 @@ public class Tests {
 		facture.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[1] = "Céline 15.75$";
-		tabLignesExpected[2] = "Steeve 5.0$";
-		tabLignesExpected[3] = "William 13.0$";
+		tabLignesExpected[0] = "Céline 15.75$";
+		tabLignesExpected[1] = "Steeve 5.0$";
+		tabLignesExpected[2] = "William 13.0$";
 		
 
+		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		
+		
+	}
+	
+	//William
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testLignesFacturesErreurPlat() {
+		
+		String fichierTest = ".\\testErreurPlat.txt";
+		
+		Facture facture = new Facture();
+		
+		facture.gererCommandes(fichierTest);
+		
+		facture.lignesFacture();
+		
+		
+		String[] tabLignesExpected = new String[20];
+		tabLignesExpected[0] = "Erreur plat introuvé : Céline Repas_Pouletxxxxx 1";
+		tabLignesExpected[2] = "Céline 5.0$";
+		
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		
 		
@@ -98,15 +121,35 @@ public class Tests {
 		
 		facture.lignesFacture();
 		
-		for (int i = 0; i < facture.getLignesFactures().length; i++) {
-			System.out.println(facture.getLignesFactures()[i]);
-		}
-		
 		
 		String[] tabLignesExpected = new String[20];
 		tabLignesExpected[0] = "Erreur de format : Céline t Frites 2";
 		tabLignesExpected[1] = "Erreur de format : Céline t Repas_Poulet 1";
 		tabLignesExpected[2] = "Roger 10.5$";
+		
+		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		
+		
+	}
+	
+	//William
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testLignesFactureQteInvalide() {
+		
+		String fichierTest = ".\\testErreurQte.txt";
+		
+		Facture facture = new Facture();
+		
+		facture.gererCommandes(fichierTest);
+		
+		facture.lignesFacture();
+		
+		
+		String[] tabLignesExpected = new String[20];
+		tabLignesExpected[0] = "Erreur quantité invalide : Steeve Frites -1";
+		tabLignesExpected[1] = "Céline 20.75$";
+		tabLignesExpected[2] = "Steeve 2.5$";
 		
 		assertEquals(tabLignesExpected, facture.getLignesFactures());
 		

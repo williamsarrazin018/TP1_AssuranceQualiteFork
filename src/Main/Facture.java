@@ -27,6 +27,7 @@ public class Facture {
 
 	public void lignesFacture() {
 		
+		cptLignes = 0;
 		
 		for (int j = 0; j < tabErreurs.length; j++) {
 			if (tabErreurs[j] != null) {
@@ -136,30 +137,56 @@ public class Facture {
 
 					try {
 
-						boolean trouve = false;
+						boolean nomTrouve = false;
+						boolean platTrouve = false;
+						boolean qteOK = true;
+						
 						
 						String[] commande = ligneCourrante.split(" ");
-						if (commande.length > 3) {
+						if (commande.length != 3) {
 							throw new Exception("Format de commande invalide");
 						} else {
 
 							Commande commandeTmp = new Commande(commande[0],
 									commande[1], Integer.parseInt(commande[2]));
+							
+							//Nom valide
 							for (int i = 0; i < cptClient; i++) {
-								if (tabClients[i] != null && !trouve) {
+								if (tabClients[i] != null && !nomTrouve) {
 									if (tabClients[i].equals(commandeTmp.getNomClient())) {
-										trouve = true;
+										nomTrouve = true;
 									}
 								}
 							}
 							
-							if (trouve) {
+							//Plat valide
+							for (int i = 0; i < cptPlat; i++) {
+								if (tabPlats[i] != null && !platTrouve) {
+									if (tabPlats[i].getNom().equals(commandeTmp.getNomPlat())) {
+										platTrouve = true;
+									}
+								}
+							}
+							
+							//qte valide
+							if (commandeTmp.getQte() <= 0) {
+								qteOK = false;
+							}
+							
+							if (nomTrouve && platTrouve && qteOK && qteOK) {
 								tabCommandes[cptCommande] = commandeTmp;
 								cptCommande++;
-							} else {
-								tabErreurs[cptErreurs] = "Erreur nom introuvée : " + ligneCourrante;
+							} else if (!nomTrouve){
+								tabErreurs[cptErreurs] = "Erreur nom introuvé : " + ligneCourrante;
+								cptErreurs++;
+							} else if (!platTrouve) {
+								tabErreurs[cptErreurs] = "Erreur plat introuvé : " + ligneCourrante;
+								cptErreurs++;
+							} else if (!qteOK) {
+								tabErreurs[cptErreurs] = "Erreur quantité invalide : " + ligneCourrante;
 								cptErreurs++;
 							}
+
 							
 						}
 						
@@ -254,11 +281,11 @@ public class Facture {
 		
         BufferedWriter writer = null;
         try {
-            //create a temporary file
             String timeLog = new SimpleDateFormat("yyyyMMdd-HHmmss").format(Calendar.getInstance().getTime());
             File facture = new File("Facture-du-" + timeLog + ".txt");
 
             writer = new BufferedWriter(new FileWriter(facture));
+            System.out.println("Affichage des factures:");
             for (int i = 0; i < lignesFactures.length; i++) {
 				if (lignesFactures[i] != null) {
 					writer.write(lignesFactures[i] + "\n");
@@ -270,7 +297,6 @@ public class Facture {
             e.printStackTrace();
         } finally {
             try {
-                // Close the writer regardless of what happens...
                 writer.close();
             } catch (Exception e) {
             }

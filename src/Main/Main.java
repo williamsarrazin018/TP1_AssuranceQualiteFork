@@ -16,9 +16,9 @@ public class Main {
 		
 		//cv2.afficher();
 		
-		System.out.println("Bienvenue chez Barette!\nFactures:");
+		System.out.println("Bienvenue chez Barette!\n");
 		
-		String fichier = ".\\testErreurNom.txt";
+		String fichier = ".\\commande.txt";
 		
 		Facture facture = new Facture();
 		facture.gererCommandes(fichier);
