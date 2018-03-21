@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import Main.Commande;
 import Main.Facture;
 import Main.Plat;
 
@@ -74,6 +75,16 @@ public class Tests {
 			
 			}
 	
+		//Agustin
+				@Test
+				public void verifierCommandeTest() {
+					Commande com = new Commande("Roger","Poutine",2);
+					int qte = 2;
+					String nom = "Roger";
+					
+					assertEquals(nom,com.getNomClient());
+					assertEquals(qte,com.getQte());
+				}
 	
 	
 
