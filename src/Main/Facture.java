@@ -25,6 +25,11 @@ public class Facture {
 	private static int cptCommande = 0;
 	private String[] lignesFactures = new String[20];
 
+	public Facture() {
+		
+		
+	}
+	
 	public void lignesFacture() {
 		
 		cptLignes = 0;
@@ -140,6 +145,7 @@ public class Facture {
 						boolean nomTrouve = false;
 						boolean platTrouve = false;
 						boolean qteOK = true;
+						boolean fini = false;
 						
 						
 						String[] commande = ligneCourrante.split(" ");
@@ -151,8 +157,8 @@ public class Facture {
 									commande[1], Integer.parseInt(commande[2]));
 							
 							//Nom valide
-							for (int i = 0; i < cptClient; i++) {
-								if (tabClients[i] != null && !nomTrouve) {
+							for (int i = 0; i < cptClient  && !nomTrouve; i++) {
+								if (tabClients[i] != null) {
 									if (tabClients[i].equals(commandeTmp.getNomClient())) {
 										nomTrouve = true;
 									}
@@ -160,8 +166,8 @@ public class Facture {
 							}
 							
 							//Plat valide
-							for (int i = 0; i < cptPlat; i++) {
-								if (tabPlats[i] != null && !platTrouve) {
+							for (int i = 0; i < cptPlat && !platTrouve; i++) {
+								if (tabPlats[i] != null) {
 									if (tabPlats[i].getNom().equals(commandeTmp.getNomPlat())) {
 										platTrouve = true;
 									}
@@ -215,9 +221,9 @@ public class Facture {
 
 					bReader.close();
 
-				if (bReader != null)
+				if (fReader != null)
 
-					bReader.close();
+					fReader.close();
 
 			} catch (IOException ex) {
 
@@ -240,10 +246,8 @@ public class Facture {
 			}
 		}
 		if (clientCorrect) {
-//			System.out.println("Nom existant"); // pour test
 			String[] nom = client.split(" ");
 			if (nom.length > 1) {
-//				System.out.println("Probleme avec espace"); // pour test
 				correct = false;
 			}
 		} else {

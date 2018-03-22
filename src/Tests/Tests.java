@@ -10,6 +10,7 @@ import Main.Plat;
 
 public class Tests {
 
+	
 	//Agustin
 	@Test
 	public void verifierClientTest() {
@@ -96,16 +97,16 @@ public class Tests {
 		
 		String fichierTest = ".\\testFacture0.txt";
 		
-		Facture facture = new Facture();
+		Facture facture1 = new Facture();
 		
-		facture.gererCommandes(fichierTest);
+		facture1.gererCommandes(fichierTest);
 		
-		facture.lignesFacture();
+		facture1.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
 		tabLignesExpected[0] = "Céline 15.75$";
 		
-		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		assertEquals(tabLignesExpected, facture1.getLignesFactures());
 		
 		
 	}
@@ -117,11 +118,11 @@ public class Tests {
 		
 		String fichierTest = ".\\testFactureSansErreur.txt";
 		
-		Facture facture = new Facture();
+		Facture facture2 = new Facture();
 		
-		facture.gererCommandes(fichierTest);
+		facture2.gererCommandes(fichierTest);
 		
-		facture.lignesFacture();
+		facture2.lignesFacture();
 		
 		String[] tabLignesExpected = new String[20];
 		tabLignesExpected[0] = "Céline 15.75$";
@@ -129,57 +130,11 @@ public class Tests {
 		tabLignesExpected[2] = "William 13.0$";
 		
 
-		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		assertEquals(tabLignesExpected, facture2.getLignesFactures());
 		
 		
 	}
-	
-	//William
-	@SuppressWarnings("deprecation")
-	@Test
-	public void testLignesFacturesErreurPlat() {
-		
-		String fichierTest = ".\\testErreurPlat.txt";
-		
-		Facture facture = new Facture();
-		
-		facture.gererCommandes(fichierTest);
-		
-		facture.lignesFacture();
-		
-		
-		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[0] = "Erreur plat introuvé : Céline Repas_Pouletxxxxx 1";
-		tabLignesExpected[2] = "Céline 5.0$";
-		
-		assertEquals(tabLignesExpected, facture.getLignesFactures());
-		
-		
-	}
-	
-	//William
-	@SuppressWarnings("deprecation")
-	@Test
-	public void testLignesFactureAvecErreurFormatNom() {
-		
-		String fichierTest = ".\\testErreurFormat.txt";
-		
-		Facture facture = new Facture();
-		
-		facture.gererCommandes(fichierTest);
-		
-		facture.lignesFacture();
-		
-		
-		String[] tabLignesExpected = new String[20];
-		tabLignesExpected[0] = "Erreur de format : Céline t Frites 2";
-		tabLignesExpected[1] = "Erreur de format : Céline t Repas_Poulet 1";
-		tabLignesExpected[2] = "Roger 10.5$";
-		
-		assertEquals(tabLignesExpected, facture.getLignesFactures());
-		
-		
-	}
+
 	
 	//William
 	@SuppressWarnings("deprecation")
@@ -188,11 +143,11 @@ public class Tests {
 		
 		String fichierTest = ".\\testErreurQte.txt";
 		
-		Facture facture = new Facture();
+		Facture facture5 = new Facture();
 		
-		facture.gererCommandes(fichierTest);
+		facture5.gererCommandes(fichierTest);
 		
-		facture.lignesFacture();
+		facture5.lignesFacture();
 		
 		
 		String[] tabLignesExpected = new String[20];
@@ -200,7 +155,7 @@ public class Tests {
 		tabLignesExpected[1] = "Céline 20.75$";
 		tabLignesExpected[2] = "Steeve 2.5$";
 		
-		assertEquals(tabLignesExpected, facture.getLignesFactures());
+		assertEquals(tabLignesExpected, facture5.getLignesFactures());
 		
 		
 	}

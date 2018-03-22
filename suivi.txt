@@ -4,17 +4,16 @@ Partage des tâches :
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 William :
-- Écriture des tests unitaires par rapport aux fonctionnalités d'Agustin.
-- Faire la gestion de l'affichage des factures (console et dans un fichier) d'après les tests faits par Agustin.
+- Écriture des tests unitaires pour les factures.
+- Faire la gestion et l'affichage des factures (console et dans un fichier).
 - Modifier certaines parties du main pour le rendre plus optimisé (isolement en méthodes).
 - Faire les tests unitaires pour la création des factures.
-- Faire les tests unitaires pour la création et l'affichage d'un CV.
 - Ré-usinage du code fait par Agustin.
 
 
 Agustin : 
-- Écriture des tests unitaires par rapport aux fonctionnalités de William.
-- Faire la gestion des exceptions lors du traitement de données d'après les tests faits par William.
+- Écriture des tests unitaires pour les vérifications.
+- Faire la gestion des exceptions lors du traitement de données
 - Implémenter des constantes pour les taxes et adapter les calculs.
-- Faire les tests unitaires pour la lecture du fichier des informations (en tenant compte des exceptions).
+- Faire les tests unitaires pour la gestion des exceptions.
 - Ré-usinage du code fait par William.
