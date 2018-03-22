@@ -24,7 +24,7 @@ public class TestPlat {
 		
 		String[] tabLignesExpected = new String[20];
 		tabLignesExpected[0] = "Erreur plat introuvé : Céline Repas_Pouletxxxxx 1";
-		tabLignesExpected[1] = "Céline 5.0$";
+		tabLignesExpected[1] = "Céline 5.74$";
 		
 		assertEquals(tabLignesExpected, facture3.getLignesFactures());
 		

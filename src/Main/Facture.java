@@ -18,6 +18,8 @@ public class Facture {
 	public static Commande[] tabCommandes = new Commande[20];
 	public static String[] tabErreurs = new String[20];
 	
+	private static final double TPS = 0.05;
+	private static final double TVQ = 0.0975;
 	private static int cptLignes = 0;
 	private static int cptErreurs = 0;
 	private static int cptClient = 0;
@@ -57,8 +59,8 @@ public class Facture {
 						if (tabPlats[k].getNom().equals(
 								tabCommandes[j].getNomPlat())) {
 
-							prix += tabPlats[k].getPrix()
-									* tabCommandes[j].getQte();
+							prix += tabPlats[k].getPrix() * tabCommandes[j].getQte() + (tabPlats[k].getPrix() * tabCommandes[j].getQte())
+									* (TPS + TVQ);
 							trouve = true;
 
 						} else {
@@ -73,7 +75,7 @@ public class Facture {
 			}
 
 			if (prix > 0) {
-					getLignesFactures()[cptLignes] = tabClients[i] + " " + prix + "$";
+					getLignesFactures()[cptLignes] = tabClients[i] + " " + (Math.round(prix * 100.0) / 100.0) + "$";
 					cptLignes++;
 
 			}
